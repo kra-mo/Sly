@@ -18,7 +18,7 @@ void showSlyAboutDialog(BuildContext context) {
 
 Sly is a free and open source application licensed under
 the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html).
-The source code is available on [GitHub](https://github.com/kra-mo/Sly).
+The source code is available [here](https://git.kramo.page/Sly).
 
 If you would like to support continued development
 of the app, consider donating via
