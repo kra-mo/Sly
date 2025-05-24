@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> Please use [Codeberg](https://codeberg.org/kramo/Sly) for issues and pull requests.
+> The GitHub repository is a [mirror](https://en.wikipedia.org/wiki/Mirror_site).
+
 <div align="center">
   <img src="macos/Runner/Assets.xcassets/AppIcon.appiconset/Sly 128.png" width="128" height="128">
 
