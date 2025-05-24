@@ -37,9 +37,9 @@ For now, if you want to try out the app, you can do so at [sly.kramo.page](https
 
 **Issues for each platform can be found here:**
 
-- iOS - https://github.com/kra-mo/sly/issues/11
-- macOS - https://github.com/kra-mo/sly/issues/9
-- Windows - https://github.com/kra-mo/sly/issues/10
+- iOS - https://codeberg.org/kramo/Sly/issues/11
+- macOS - https://codeberg.org/kramo/Sly/issues/9
+- Windows - https://codeberg.org/kramo/Sly/issues/10
 
 # Contributing
 
@@ -53,4 +53,4 @@ For now, localization of the app is not possible, but I plan to set up translati
 
 # Roadmap
 
-The roadmap for the project is available [here](https://github.com/users/kra-mo/projects/4).
+The roadmap for the project is available [here](https://codeberg.org/kramo/Sly/projects/17691).
