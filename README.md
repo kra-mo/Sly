@@ -9,7 +9,7 @@
 
   A Friendly Image Editor
 
-  <img src="packaging/screenshot.png">
+  <img src="assets/screenshot.png">
 
 </div>
 
