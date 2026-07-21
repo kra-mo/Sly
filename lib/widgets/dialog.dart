@@ -16,19 +16,18 @@ import '/widgets/button.dart';
 Future<void> showSlyDialog(
   BuildContext context,
   String title,
-  List<Widget> children,
-) async {
+  List<Widget> children, {
+  bool hideTitle = false,
+}) async {
   if (isWide(context)) {
     await showGeneralDialog(
       barrierDismissible: true,
-      barrierLabel: title,
+      barrierLabel: 'title',
       context: context,
       pageBuilder: (context, animation, secondaryAnimation) {
         return SimpleDialog(
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(18),
-            ),
+            borderRadius: BorderRadius.all(Radius.circular(18)),
           ),
           insetPadding: const EdgeInsets.symmetric(
             horizontal: 12,
@@ -45,22 +44,26 @@ Future<void> showSlyDialog(
             left: 16,
             right: 16,
           ),
-          title: Center(
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
+          title: hideTitle
+              ? null
+              : Center(
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
           children: children
               .asMap()
               .entries
-              .map((entry) => entry.key == children.length - 1
-                  ? entry.value
-                  : Padding(
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: entry.value,
-                    ))
+              .map(
+                (entry) => entry.key == children.length - 1
+                    ? entry.value
+                    : Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: entry.value,
+                      ),
+              )
               .toList(),
         );
       },
@@ -70,10 +73,7 @@ Future<void> showSlyDialog(
 
         return FadeTransition(
           opacity: animation.drive(
-            Tween(
-              begin: 0.0,
-              end: 1.0,
-            ).chain(
+            Tween(begin: 0.0, end: 1.0).chain(
               CurveTween(
                 curve: animIn ? Curves.easeOutExpo : Curves.easeInOutQuint,
               ),
@@ -81,10 +81,7 @@ Future<void> showSlyDialog(
           ),
           child: ScaleTransition(
             scale: animation.drive(
-              Tween(
-                begin: animIn ? 1.2 : 1.6,
-                end: 1.0,
-              ).chain(
+              Tween(begin: animIn ? 1.2 : 1.6, end: 1.0).chain(
                 CurveTween(
                   curve: animIn ? Curves.easeOutBack : Curves.easeOutQuint,
                 ),
@@ -105,38 +102,33 @@ Future<void> showSlyDialog(
           topRight: Radius.circular(12),
         ),
       ),
-      constraints: const BoxConstraints(
-        maxWidth: 480,
-      ),
+      constraints: const BoxConstraints(maxWidth: 480),
       isScrollControlled: true,
       builder: (context) {
         return ListView(
           shrinkWrap: true,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 32,
-                bottom: 20,
-                left: 16,
-                right: 16,
-              ),
-              child: Center(
-                child: Text(
-                  title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+            if (!hideTitle)
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 32,
+                  bottom: 20,
+                  left: 16,
+                  right: 16,
+                ),
+                child: Center(
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
-            ),
             ListView.separated(
-              padding: const EdgeInsets.only(
-                bottom: 32,
-                left: 24,
-                right: 24,
-              ),
+              padding: const EdgeInsets.only(bottom: 32, left: 24, right: 24),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: children.length,
@@ -162,11 +154,11 @@ class SlyCancelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(top: 4),
-        child: SlyButton(
-          suggested: suggested,
-          onPressed: () => Navigator.pop(context),
-          child: Text(label ?? 'Cancel'),
-        ),
-      );
+    padding: const EdgeInsets.only(top: 4),
+    child: SlyButton(
+      suggested: suggested,
+      onPressed: () => Navigator.pop(context),
+      child: Text(label ?? 'Cancel'),
+    ),
+  );
 }
