@@ -5,7 +5,6 @@ name: CI
 on:
   push:
     branches: [main]
-  pull_request:
 
 concurrency:
   group: release-${{ github.sha }}
@@ -29,8 +28,16 @@ jobs:
         with:
           channel: stable
 
+      - name: Decode keystore
+        run: echo "$KEYSTORE_CONTENT" | base64 --decode > keystore.jks
+        env:
+          KEYSTORE_CONTENT: ${{ secrets.KEYSTORE_CONTENT }}
+
       - name: Build for Android
         run: flutter build apk --split-per-abi --release
+        env:
+          KEYSTORE_PATH: ../../keystore.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
 
       - name: Zip compiled files
         run: |
