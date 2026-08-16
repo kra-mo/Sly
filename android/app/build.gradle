@@ -37,7 +37,7 @@ android {
 
     signingConfigs {
         release {
-			keyAlias "key"
+			keyAlias "upload"
 			def storePath = keystoreProperties['path'] ?: System.getenv("KEYSTORE_PATH")
 			storeFile storePath ? file(storePath) : null
 			keyPassword keystoreProperties['password'] ?: System.getenv("KEYSTORE_PASSWORD")
