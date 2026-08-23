@@ -45,6 +45,14 @@
     </screenshot>
   </screenshots>
     <releases>
+		<release version="1.0.1" date="2026-08-23">
+            <description>
+                <ul>
+                    <li>Redesigned about dialog</li>
+                    <li>Changed program name association, which fixes the app icon when running Sly on Wayland</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.0.0" date="2024-10-17">
             <description>
                 <ul>

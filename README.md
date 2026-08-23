@@ -29,6 +29,16 @@ When you're done, just save the photo with the quality settings of your choosing
 
 *Google Play and the Google Play logo are trademarks of Google LLC.*
 
+You can also grab direct downloads from [the latest release](https://codeberg.org/Sly/Sly/releases/latest).
+
+## Apk Signing
+
+For verification, the APKs are signed with a certificate with this fingerprint:
+```
+SHA1: CC:A0:B5:93:30:F8:70:D5:50:3C:E9:C0:3D:43:6D:C0:44:5E:14:7E
+SHA256: 34:7E:2B:6A:35:E1:D7:B1:92:55:7F:E3:D7:4F:A9:9C:7C:59:17:37:52:3F:0B:2E:98:54:2F:B5:28:F3:02:45
+```
+
 ## Other Platforms
 
 I'm planning to make the app available for all other major platforms (iOS, macOS, Windows) in the near future.

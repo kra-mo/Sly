@@ -2,7 +2,7 @@ name: sly
 description: "Friendly image editor"
 publish_to: "none"
 
-version: 1.0.0+7
+version: 1.0.1+7
 
 environment:
   sdk: ^3.12.2
