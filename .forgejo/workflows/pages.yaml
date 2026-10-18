@@ -15,11 +15,11 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes flake-self-attrs
 
-      - run: nix build .#web
+      - run: cp -rL --no-preserve=mode "$(nix build .#web --no-link --print-out-paths)" site
 
       - uses: https://codeberg.org/git-pages/action@v2
         with:
           site: https://demo.sly.pictures/
           server: codeberg.page
           token: ${{ forge.token }}
-          source: result/
+          source: site/
