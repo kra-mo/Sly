@@ -10,14 +10,17 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: https://github.com/samueldr/lix-gha-installer-action@v2026-06-15
+      - name: Install Lix
+        uses: https://github.com/samueldr/lix-gha-installer-action@v2026-06-15
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes flake-self-attrs
 
-      - run: cp -rL --no-preserve=mode "$(nix build .#web --no-link --print-out-paths)" site
+      - name: Build and copy site
+        run: cp -r "$(nix build .#web --no-link --print-out-paths)" site
 
-      - uses: https://codeberg.org/git-pages/action@v2
+      - name: Upload git page
+        uses: https://codeberg.org/git-pages/action@v2
         with:
           site: https://demo.sly.pictures/
           server: codeberg.page
