@@ -13,13 +13,13 @@ jobs:
       - uses: https://github.com/samueldr/lix-gha-installer-action@v2026-06-15
         with:
           extra_nix_config: |
-            experimental-features = nix-command flakes
+            experimental-features = nix-command flakes flake-self-attrs
 
-      - run: nix develop --command flutter build web --wasm --release
+      - run: nix build .#web
 
       - uses: https://codeberg.org/git-pages/action@v2
         with:
           site: https://demo.sly.pictures/
           server: codeberg.page
           token: ${{ forge.token }}
-          source: build/web/
+          source: result/

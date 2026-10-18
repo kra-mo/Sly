@@ -41,6 +41,7 @@
           };
 
           devShells.default = pkgs.callPackage ./linux/nix/devshell.nix { };
+          packages.web = pkgs.callPackage ./linux/nix/web.nix { inherit self; };
         };
     };
 }
