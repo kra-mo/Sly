@@ -1,0 +1,18 @@
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: codeberg-tiny
+    steps:
+      - uses: https://code.forgejo.org/actions/checkout@v7
+      - run: git clone https://github.com/flutter/flutter.git
+      - run: flutter/bin/flutter build web --wasm --release
+      - uses: https://codeberg.org/git-pages/action@v2
+        with:
+          site: https://demo.sly.pictures/
+          server: codeberg.page
+          token: ${{ forge.token }}
+          source: build/web/
