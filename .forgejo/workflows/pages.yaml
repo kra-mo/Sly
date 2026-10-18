@@ -6,14 +6,17 @@ on:
 
 jobs:
   build:
-    runs-on: codeberg-tiny
+    runs-on: codeberg-small
     steps:
       - uses: actions/checkout@v7
 
-      - run: git clone https://github.com/flutter/flutter.git
+      - uses: https://github.com/samueldr/lix-gha-installer-action@v2026-06-15
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
 
-      - run: flutter/bin/flutter build web --wasm --release
-  
+      - run: nix develop --command flutter build web --wasm --release
+
       - uses: https://codeberg.org/git-pages/action@v2
         with:
           site: https://demo.sly.pictures/
